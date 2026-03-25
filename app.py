@@ -1,6 +1,4 @@
 from flask import Flask, render_template, abort
-import webbrowser
-import threading
 
 app = Flask(__name__)
 
@@ -20,7 +18,8 @@ main_games = [
     {'name': 'Ultimate Texas Hold\'em', 'file_path': 'ultimate_texas_holdem.html'},
     {'name': 'Wheel of Fortune', 'file_path': 'wheel_of_fortune.html'},
     {'name': 'Craps', 'file_path': 'craps.html'},
-    {'name': 'Lucky Draw Baccarat', 'file_path': 'lucky_draw_baccarat.html'}
+    {'name': 'Lucky Draw Baccarat', 'file_path': 'lucky_draw_baccarat.html'},
+    {'name': 'Blackjack Switch', 'file_path': 'blackjack_switch.html'}
 ]
 
 side_bets = [
@@ -32,7 +31,10 @@ side_bets = [
     {'name': 'Table Jackpot System', 'file_path': 'sb_table_jackpot.html', 'games': ['mississippi_stud', 'caribbean_stud', 'texas_holdem_bonus', 'ultimate_texas_holdem', 'three_card_poker']},
     {'name': 'Player Pair or Banker Pair', 'file_path': 'sb_player_banker_pair.html', 'games': ['baccarat']},
     {'name': 'Super 6', 'file_path': 'sb_super_6.html', 'games': ['baccarat']},
-    {'name': 'Super Sevens', 'file_path': 'sb_super_sevens.html', 'games': ['blackjack']}
+    {'name': 'Super Sevens', 'file_path': 'sb_super_sevens.html', 'games': ['blackjack']},
+    {'name': '3 Card Bonus', 'file_path': 'sb_three_card_bonus.html', 'games': ['mississippi_stud']},
+    {'name': 'Star Pairs', 'file_path': 'sb_star_pairs.html', 'games': ['blackjack', 'blackjack_challenge', 'soft_17_blackjack', 'blackjack_switch']},
+    {'name': 'Super Match', 'file_path': 'sb_super_match.html', 'games': ['blackjack_switch']},
 ]
 
 @app.route('/')
@@ -57,10 +59,6 @@ def side_bet_page(side_bet_name):
     else:
         abort(404)  
 
-def open_browser():
-    webbrowser.open("http://127.0.0.1:5000/")
-
 if __name__ == '__main__':
-    threading.Timer(2, open_browser).start()
     app.run(debug=True)
     
