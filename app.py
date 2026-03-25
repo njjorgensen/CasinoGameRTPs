@@ -19,7 +19,8 @@ main_games = [
     {'name': 'Wheel of Fortune', 'file_path': 'wheel_of_fortune.html'},
     {'name': 'Craps', 'file_path': 'craps.html'},
     {'name': 'Lucky Draw Baccarat', 'file_path': 'lucky_draw_baccarat.html'},
-    {'name': 'Blackjack Switch', 'file_path': 'blackjack_switch.html'}
+    {'name': 'Blackjack Switch', 'file_path': 'blackjack_switch.html'},
+    {'name': 'Casino War', 'file_path': 'casino_war.html'},
 ]
 
 side_bets = [
@@ -35,6 +36,7 @@ side_bets = [
     {'name': '3 Card Bonus', 'file_path': 'sb_three_card_bonus.html', 'games': ['mississippi_stud']},
     {'name': 'Star Pairs', 'file_path': 'sb_star_pairs.html', 'games': ['blackjack', 'blackjack_challenge', 'soft_17_blackjack', 'blackjack_switch']},
     {'name': 'Super Match', 'file_path': 'sb_super_match.html', 'games': ['blackjack_switch']},
+    {'name': 'Tie Wager (Casino War)', 'file_path': 'sb_tie_wager.html', 'games': ['casino_war']},
 ]
 
 @app.route('/')
