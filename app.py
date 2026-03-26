@@ -22,14 +22,14 @@ app = Flask(__name__)
 main_games = [
     Game(name='Blackjack', file_path='blackjack.html', etg='both'),
     Game(name='Blackjack Challenge', file_path='blackjack_challenge.html'),
+    Game(name='Baccarat', file_path='baccarat.html'),
+    Game(name='Caribbean Stud Poker', file_path='caribbean_stud.html'),
+    Game(name='Electronic Sic-Bo', file_path='electronic_sic-bo.html', etg='yes'),
+    Game(name='Mississippi Stud Poker', file_path='mississippi_stud.html'),
+    Game(name='Roulette', file_path='roulette.html'),
+    Game(name='Sic-Bo', file_path='sic-bo.html'),
 
-    # {'name': 'Blackjack', 'file_path': 'blackjack.html', 'etg': 'both'},
-    # {'name': 'Blackjack Challenge', 'file_path': 'blackjack_challenge.html', 'etg': 'no'},
-    # {'name': 'Baccarat', 'file_path': 'baccarat.html', 'etg': 'no'},
-    # {'name': 'Carribean Stud Poker', 'file_path': 'caribbean_stud.html', 'etg': 'no'},
-    # {'name': 'Electronic Sic-Bo', 'file_path': 'electronic_sic-bo.html', 'etg': 'no'},
-    # {'name': 'Mississippi Stud Poker', 'file_path': 'mississippi_stud.html', 'etg': 'no'},
-    # {'name': 'Roulette', 'file_path': 'roulette.html'},
+
     # {'name': 'Sic-Bo', 'file_path': 'sic-bo.html'},
     # {'name': 'Soft 17 Blackjack', 'file_path': 'soft_17_blackjack.html'},
     # {'name': 'Spanish Blackjack', 'file_path': 'spanish_blackjack.html'},
