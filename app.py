@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort
+from flask import Flask, request, render_template, abort
 from dataclasses import dataclass, field
 from typing import List
 
@@ -29,7 +29,7 @@ main_games = [
     Game(name='Soft 17 Blackjack', file_path='soft_17_blackjack.html'),
     Game(name='Spanish Blackjack', file_path='spanish_blackjack.html'),
     Game(name='Texas Hold\'em Bonus Poker', file_path='texas_holdem_bonus.html'),
-    Game(name='Three Card Poker', file_path='three_card_poker.html'),
+    Game(name='Three Card Poker', file_path='three_card_poker.html', etg='both'),
     Game(name='Ultimate Texas Hold\'em Poker', file_path='ultimate_texas_holdem.html'),
     Game(name='Wheel of Fortune', file_path='wheel_of_fortune.html'),
     Game(name='Craps', file_path='craps.html'),
@@ -50,7 +50,7 @@ side_bets = [
     SideBet(name='Super 6', file_path='sb_super_six.html', games=['baccarat']),
     SideBet(name='Super Sevens', file_path='sb_super_sevens.html', games=['blackjack']),
     SideBet(name='3 Card Bonus', file_path='sb_three_card_bonus.html', games='mississippi_stud'),
-    SideBet(name='Star Pairs', file_path='sb_star_pairs', games=['blackjack', 'blackjack_challenge', 'soft_17_blackjack', 'blackjack_switch']),
+    SideBet(name='Star Pairs', file_path='sb_star_pairs.html', games=['blackjack', 'blackjack_challenge', 'soft_17_blackjack', 'blackjack_switch']),
     SideBet(name='Super Match', file_path='sb_super_match.html', games=['blackjack_switch']),
     SideBet(name='Tie Wager (Casino War)', file_path='sb_tie_wager.html', games=['casino_war']),
 ]
@@ -73,11 +73,19 @@ def index():
 
 @app.route('/game/<game_name>')
 def game_page(game_name):
-    game_file = next((game.file_path for game in main_games if game.file_path.replace('.html', '') == game_name), None)
+    game = next((game for game in main_games if game.file_path.replace('.html', '') == game_name), None)
     relevant_side_bets = [bet for bet in side_bets if game_name in bet.games]
 
-    if game_file:
-        return render_template(f'main_games/{game_file}', side_bets=relevant_side_bets)
+    if game:
+        # Get the etg flag from the query parameters
+        etg_flag = request.args.get('etg', None)  # Get the 'etg' value from the URL (e.g., ?etg=yes or ?etg=no)
+
+        # Override 'both' if necessary
+        if etg_flag in ['yes', 'no']:
+            etg = etg_flag  # Use the value from the URL
+        else:
+            etg = game.etg  # Default to the game's original 'etg' value
+        return render_template(f'main_games/{game.file_path}', side_bets=relevant_side_bets, etg=etg)
     else:
         abort(404)  
 
@@ -93,4 +101,3 @@ def side_bet_page(side_bet_name):
 if __name__ == '__main__':
     app.run(debug=True)
 
-    

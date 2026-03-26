@@ -6,12 +6,12 @@
     <title>Three Card Poker RTP</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body data-game="Three Card Poker" onload="loadNavigationButtons()"
+<body data-game="Three Card Poker" data-etg="{{ etg }}" onload="loadNavigationButtons()"
         data-side-bets="{% for side_bet in side_bets %}
             {{ url_for('side_bet_page', side_bet_name=side_bet.file_path.replace('.html', '')) }}{% if not loop.last %},{% endif %}
         {% endfor %}">
     <header>
-        <h1>Three Card Poker</h1>
+        <h1>Three Card Poker {{ etg }}</h1>
     </header>
     <section id="tables">
         <div>
@@ -26,21 +26,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Three Card Poker</td>
-                    <td>2.05</td>
+                <tr data-etg="both">
+                    <td>5-4-1 paytable</td> 
+                    <td>1.67</td>
                     <td>96.63%</td>
                     <td>3.37%</td>
                     <td>97.99% / 2.01%</td>
                 </tr>
             </tbody>
             <tbody>
-                <tr>
-                    <td>Three Card Poker - electronic</td>
-                    <td>2.05</td>
-                    <td>96.63%</td>
-                    <td>3.37%</td>
-                    <td>97.99% / 2.01%</td>
+                <tr data-etg="yes">
+                    <td>5-3-1 paytable</td>
+                    <td>1.67</td>
+                    <td>96.39%</td>
+                    <td>3.61%</td>
+                    <td>97.84% / 2.16%</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr data-etg="yes">
+                    <td>4-3-1 paytable</td>
+                    <td>1.67</td>
+                    <td>96.17%</td>
+                    <td>3.83%</td>
+                    <td>97.72% / 2.28%</td>
                 </tr>
             </tbody>
         </table>
@@ -64,5 +73,5 @@
     <div id="buttons-container"></div>
     <script src="{{ url_for('static', filename='scripts/loadNavigationButtons.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
-</body>
+
 </html>
