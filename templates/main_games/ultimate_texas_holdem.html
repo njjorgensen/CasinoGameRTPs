@@ -6,7 +6,7 @@
     <title>Ultimate Texas Hold'em Poker RTP</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body data-game="Ultimate Texas Hold'em Poker" onload="loadNavigationButtons()"
+<body data-game="Ultimate Texas Hold'em Poker" data-etg = "{{ etg }}" onload="loadNavigationButtons()"
         data-side-bets="{% for side_bet in side_bets %}
             {{ url_for('side_bet_page', side_bet_name=side_bet.file_path.replace('.html', '')) }}{% if not loop.last %},{% endif %}
         {% endfor %}">

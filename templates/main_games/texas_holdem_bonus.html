@@ -6,7 +6,7 @@
     <title>Texas Hold'em Bonus Poker RTP</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body data-game="Texas Hold'em Bonus Poker" onload="loadNavigationButtons()"
+<body data-game="Texas Hold'em Bonus Poker" data-etg = "{{ etg }}" onload="loadNavigationButtons()"
         data-side-bets="{% for side_bet in side_bets %}
             {{ url_for('side_bet_page', side_bet_name=side_bet.file_path.replace('.html', '')) }}{% if not loop.last %},{% endif %}
         {% endfor %}">
