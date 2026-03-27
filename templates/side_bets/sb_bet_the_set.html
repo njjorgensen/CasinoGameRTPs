@@ -6,7 +6,7 @@
     <title>Bet the Set RTP</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body onload="loadNavigationButtons()">
+<body data-etg = "{{ etg }}" onload="loadNavigationButtons()">
     <header>
         <h1>Bet the Set</h1>
     </header>
@@ -19,7 +19,7 @@
         </select>
     </section>
     <section id="tables">
-        <div class="menu-filter" data-filter="6">
+        <div class="menu-filter" data-filter="6" data-etg="yes">
             <h2>6 Decks</h2>
             <table class="sideBets">
                 <thead>
@@ -38,7 +38,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="menu-filter" data-filter="8">
+        <div class="menu-filter" data-filter="8" data-etg="yes">
             <h2>8 Decks</h2>
             <table class="sideBets">
                 <thead>

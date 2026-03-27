@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isIndexPage) {
         sortListAlphabetically('main-game-names');
         sortListAlphabetically('side-bet-names');
+        sortListAlphabetically('etg-main-game-names');
+        sortListAlphabetically('etg-side-bet-names');
     }
 
     if (resetButton) {
@@ -99,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     async function updateSideBets(selectedOption) {
         // Check if the page has side bets data
         if (!document.body.getAttribute('data-side-bets')) {
@@ -112,8 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const mainGameFilters = document.querySelectorAll('.menu-filter'); // Get all filters from the main game
             const etgFlag = document.body.getAttribute('data-etg'); // Get the ETG flag from the <body> tag
             sideBetsTbody.innerHTML = '';
-
-            // console.log("etgFlag:", etgFlag);
 
             for (const file of sideBetFiles) {
                 const response = await fetch(file.trim());
@@ -149,24 +148,29 @@ document.addEventListener('DOMContentLoaded', () => {
                         const rows = table.querySelectorAll('tbody tr');
 
                         rows.forEach(row => {
-                            const clonedRow = row.cloneNode(true);
+                            const rowETG = row.getAttribute('data-etg');
+                            const isRowRelevantETG = !rowETG || rowETG === etgFlag || rowETG === 'both';
+                            
+                            if (isRowRelevantETG) {
+                                const clonedRow = row.cloneNode(true);
 
-                            const betTypeCell = clonedRow.querySelector('td:first-child');
-                            betTypeCell.textContent = `${sideBetHeader} - ${betTypeCell.textContent}`;
+                                const betTypeCell = clonedRow.querySelector('td:first-child');
+                                betTypeCell.textContent = `${sideBetHeader} - ${betTypeCell.textContent}`;
 
-                            // Add deck cell only when relevant (e.g., when there are 4 columns)
-                            if (columnsCount === 4 && deckValue) {
-                                const deckCell = document.createElement('td');
-                                deckCell.textContent = deckValue;
-                                clonedRow.insertBefore(deckCell, clonedRow.querySelector('td:nth-child(2)'));
+                                // Add deck cell only when relevant (e.g., when there are 4 columns)
+                                if (columnsCount === 4 && deckValue) {
+                                    const deckCell = document.createElement('td');
+                                    deckCell.textContent = deckValue;
+                                    clonedRow.insertBefore(deckCell, clonedRow.querySelector('td:nth-child(2)'));
+                                }
+
+                                const cells = clonedRow.querySelectorAll('td');
+                                cells.forEach((cell, index) => {
+                                    cell.classList.add(`column-${index + 1}`);
+                                });
+
+                                sideBetsTbody.appendChild(clonedRow);
                             }
-
-                            const cells = clonedRow.querySelectorAll('td');
-                            cells.forEach((cell, index) => {
-                                cell.classList.add(`column-${index + 1}`);
-                            });
-
-                            sideBetsTbody.appendChild(clonedRow);
                         });
                     }
                 });
@@ -259,13 +263,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterRowsByETG() {
         // Get the ETG flag from the <body> tag
         const etgFlag = document.body.dataset.etg; // 'yes', 'no', or 'both'
+        console.log("etgFlag", etgFlag);
 
         // Get all tables with the class `mainGame`
-        const tables = document.querySelectorAll('table.mainGame');
+        const tables = document.querySelectorAll('table.mainGame, table.sideBets');
 
         tables.forEach(table => {
             // Get the `data-etg` attribute from the table, default to 'no' if not defined
             const tableETG = table.dataset.etg || etgFlag;
+
+            console.log("tableETG", tableETG)
 
             // Get all rows in the current table
             const rows = table.querySelectorAll('tbody tr');

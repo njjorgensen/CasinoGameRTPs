@@ -20,12 +20,12 @@ app = Flask(__name__)
 main_games = [
     Game(name='Blackjack', file_path='blackjack.html', etg='both'),
     Game(name='Blackjack Challenge', file_path='blackjack_challenge.html'),
-    Game(name='Baccarat', file_path='baccarat.html'),
+    Game(name='Baccarat', file_path='baccarat.html', etg='both'),
     Game(name='Caribbean Stud Poker', file_path='caribbean_stud.html'),
-    Game(name='Electronic Sic-Bo', file_path='electronic_sic-bo.html', etg='yes'),
+    # Game(name='Electronic Sic-Bo', file_path='electronic_sic-bo.html', etg='yes'),
     Game(name='Mississippi Stud Poker', file_path='mississippi_stud.html'),
     Game(name='Roulette', file_path='roulette.html', etg='both'),
-    Game(name='Sic-Bo', file_path='sic-bo.html'),
+    Game(name='Sic-Bo', file_path='sic-bo.html', etg='both'),
     Game(name='Soft 17 Blackjack', file_path='soft_17_blackjack.html'),
     Game(name='Spanish Blackjack', file_path='spanish_blackjack.html'),
     Game(name='Texas Hold\'em Bonus Poker', file_path='texas_holdem_bonus.html'),
@@ -35,27 +35,32 @@ main_games = [
     Game(name='Craps', file_path='craps.html'),
     Game(name='Lucky Draw Baccarat', file_path='lucky_draw_baccarat.html'),
     Game(name='Blackjack Switch', file_path='blackjack_switch.html'),
-    Game(name='Casino War', file_path='casino_war.html'),
+    Game(name='Casino War', file_path='casino_war.html', etg='both'),
     Game(name='RouletteX', file_path='roulettex.html', etg='yes'),
 ]
 
 side_bets = [
-    SideBet(name='Perfect Pairs', file_path='sb_perfect_pairs.html', games=['baccarat', 'blackjack', 'blackjack_challenge', 'soft_17_blackjack'], etg='both'),
+    SideBet(name='Perfect Pairs', file_path='sb_perfect_pairs.html', games=['baccarat', 'blackjack', 'blackjack_challenge', 'soft_17_blackjack']),
     SideBet(name='Lucky Lucky', file_path='sb_lucky_lucky.html', games=['blackjack', 'blackjack_challenge', 'soft_17_blackjack']),
     SideBet(name='Dragon Bonus', file_path='sb_dragon_bonus.html', games=['baccarat']),
     SideBet(name='Tiger Baccarat', file_path='sb_tiger_baccarat.html', games=['baccarat']),
     SideBet(name='Perfect Pairs - Spanish', file_path='sb_perfect_pairs_spanish.html', games=['spanish_blackjack']),
     SideBet(name='Table Jackpot System', file_path='sb_table_jackpot.html', games=['mississippi_stud', 'caribbean_stud', 'texas_holdem_bonus', 'ultimate_texas_holdem', 'three_card_poker']),
-    SideBet(name='Player Pair or Banker Pair', file_path='sb_player_banker_pair.html', games=['baccarat']),
-    SideBet(name='Super 6', file_path='sb_super_six.html', games=['baccarat']),
+    SideBet(name='Player Pair or Banker Pair', file_path='sb_player_banker_pair.html', games=['baccarat'], etg='both'),
+    SideBet(name='Super 6', file_path='sb_super_six.html', games=['baccarat'], etg='both'),
     SideBet(name='Super Sevens', file_path='sb_super_sevens.html', games=['blackjack']),
     SideBet(name='3 Card Bonus', file_path='sb_three_card_bonus.html', games='mississippi_stud'),
     SideBet(name='Star Pairs', file_path='sb_star_pairs.html', games=['blackjack', 'blackjack_challenge', 'soft_17_blackjack', 'blackjack_switch']),
     SideBet(name='Super Match', file_path='sb_super_match.html', games=['blackjack_switch']),
-    SideBet(name='Tie Wager (Casino War)', file_path='sb_tie_wager.html', games=['casino_war']),
+    SideBet(name='Tie Wager (Casino War)', file_path='sb_tie_wager.html', games=['casino_war'], etg='both'),
+    SideBet(name='6 Card Bonus', file_path='sb_six_card_bonus.html', games=['three_card_poker'], etg="yes"),
+    SideBet(name='Pair Plus', file_path='sb_pair_plus.html', games=['three_card_poker'], etg="both"),
+    SideBet(name='Kings Bounty', file_path='sb_kings_bounty.html', games=['blackjack'], etg="yes"),
+    SideBet(name='Royal Match 21', file_path='sb_royal_match.html', games=['blackjack'], etg="yes"),
+    SideBet(name='Bet the Set', file_path='sb_bet_the_set.html', games=['blackjack'], etg="yes"),
+    SideBet(name='Bonus Bet (Texas Hold\'em Bonus Poker)', file_path='sb_bonus_bet.html', games=['texas_holdem_bonus']),
+    SideBet(name='Trips Wager (Ultimate Texas Hold\'em Poker)', file_path='sb_trips_wager.html', games=['ultimate_texas_holdem']),
 ]
-
-
 
 @app.route('/')
 def index():
@@ -91,10 +96,20 @@ def game_page(game_name):
 
 @app.route('/side_bets/<side_bet_name>')
 def side_bet_page(side_bet_name):
-    side_bet_file = next((side_bet.file_path for side_bet in side_bets if side_bet.file_path.replace('.html', '') == side_bet_name), None)
+    side_bet = next((side_bet for side_bet in side_bets if side_bet.file_path.replace('.html', '') == side_bet_name), None)
 
-    if side_bet_file:
-        return render_template(f'side_bets/{side_bet_file}')
+    if side_bet:
+        etg_flag = request.args.get('etg', None)
+
+        print(etg_flag)
+
+        if etg_flag in ['yes', 'no']:
+            etg = etg_flag  # Use the value from the URL
+        else:
+            etg = side_bet.etg  # Default to the game's original 'etg' value
+       
+        return render_template(f'side_bets/{side_bet.file_path}', etg=etg)
+    
     else:
         abort(404)   
 

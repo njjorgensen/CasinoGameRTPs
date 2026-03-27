@@ -6,7 +6,7 @@
     <title>Tie Wager (Casino War)</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body onload="loadNavigationButtons()">
+<body data-etg = "{{ etg }}" onload="loadNavigationButtons()">
     <header>
         <h1>Tie Wager (Casino War)</h1>
     </header>
@@ -30,17 +30,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-etg="no">
                         <td>Tie Wager</td>
                         <td>81.35%</td>
                         <td>18.65%</td>
+                    </tr>
+                    <tr data-etg="yes">
+                        <td>Tie Wager</td>
+                        <td>88.75%</td>
+                        <td>11.25%</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="menu-filter" data-filter="8">
             <h2>8 Decks</h2>
-            <table class="sideBets">
+            <table class="sideBets" data-etg="no">
                 <thead>
                     <tr>
                         <th data-sort="betType">Bet Type</th>
@@ -49,7 +54,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-etg="no">
                         <td>Tie Wager</td>
                         <td>82.17%</td>
                         <td>17.83%</td>

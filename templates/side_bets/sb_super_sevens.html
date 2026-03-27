@@ -6,7 +6,7 @@
     <title>Super Sevens RTP</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body onload="loadNavigationButtons()">
+<body data-etg = "{{ etg }}" onload="loadNavigationButtons()">
     <header>
         <h1>Super Sevens</h1>
     </header>
@@ -20,7 +20,7 @@
         </select>
     </section>
     <section id="tables">
-        <div class="menu-filter" data-filter="5">
+        <div class="menu-filter" data-filter="5" data-etg="no">
             <h2>6 Decks</h2>
             <table class="sideBets">
                 <thead>
@@ -39,7 +39,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="menu-filter" data-filter="6">
+        <div class="menu-filter" data-filter="6" data-etg="no">
             <h2>6 Decks</h2>
             <table class="sideBets">
                 <thead>
@@ -58,7 +58,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="menu-filter" data-filter="8">
+        <div class="menu-filter" data-filter="8" data-etg="no">
             <h2>8 Decks</h2>
             <table class="sideBets">
                 <thead>
