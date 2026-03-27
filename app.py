@@ -22,7 +22,6 @@ main_games = [
     Game(name='Blackjack Challenge', file_path='blackjack_challenge.html'),
     Game(name='Baccarat', file_path='baccarat.html', etg='both'),
     Game(name='Caribbean Stud Poker', file_path='caribbean_stud.html'),
-    # Game(name='Electronic Sic-Bo', file_path='electronic_sic-bo.html', etg='yes'),
     Game(name='Mississippi Stud Poker', file_path='mississippi_stud.html'),
     Game(name='Roulette', file_path='roulette.html', etg='both'),
     Game(name='Sic-Bo', file_path='sic-bo.html', etg='both'),

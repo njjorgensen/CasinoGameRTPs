@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const path = window.location.pathname;
     const isIndexPage = path =='/';
+    const isMainPage = path.startsWith('/game/');
+    const isSideBetPage = path.startsWith('/side_bets/');
 
     const sortingInitialized = new WeakSet();
 
@@ -71,6 +73,16 @@ document.addEventListener('DOMContentLoaded', () => {
         sortListAlphabetically('side-bet-names');
         sortListAlphabetically('etg-main-game-names');
         sortListAlphabetically('etg-side-bet-names');
+    }
+
+    if (isMainPage || isSideBetPage) {
+        const etgFlag = document.body.dataset.etg;
+        const header = document.querySelector("header h1");
+
+        if (etgFlag === 'yes' || etgFlag === 'both') {
+            header.textContent = `${header.textContent} (Electronic)`;
+        }
+        
     }
 
     if (resetButton) {
@@ -133,8 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const deckValue = table.getAttribute('data-filter');
                     const tableETG = table.getAttribute('data-etg'); // Get the ETG flag for the side bet table
 
-                  //  console.log("tableETG:", tableETG);
-
                     // Check if the side bet table matches the ETG flag
                     const isRelevantETG = !tableETG || tableETG === etgFlag || etgFlag === 'both';
 
@@ -150,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         rows.forEach(row => {
                             const rowETG = row.getAttribute('data-etg');
                             const isRowRelevantETG = !rowETG || rowETG === etgFlag || rowETG === 'both';
-                            
+
                             if (isRowRelevantETG) {
                                 const clonedRow = row.cloneNode(true);
 
@@ -248,8 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const sortOrder = header.classList.contains('sort-asc') ? 'sort-asc' :
                               header.classList.contains('sort-desc') ? 'sort-desc' :
                               'none';
-    
-            console.log(`Column ${index + 1}: ${sortOrder}`);
         });
     }
 
@@ -263,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterRowsByETG() {
         // Get the ETG flag from the <body> tag
         const etgFlag = document.body.dataset.etg; // 'yes', 'no', or 'both'
-        console.log("etgFlag", etgFlag);
 
         // Get all tables with the class `mainGame`
         const tables = document.querySelectorAll('table.mainGame, table.sideBets');
@@ -271,8 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tables.forEach(table => {
             // Get the `data-etg` attribute from the table, default to 'no' if not defined
             const tableETG = table.dataset.etg || etgFlag;
-
-            console.log("tableETG", tableETG)
 
             // Get all rows in the current table
             const rows = table.querySelectorAll('tbody tr');
