@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const header = document.querySelector("header h1");
 
         if (etgFlag === 'yes' || etgFlag === 'both') {
-            header.textContent = `${header.textContent} (Electronic)`;
+            header.textContent = header.textContent + " (Electronic)";
         }
         
     }
@@ -251,14 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         rows.forEach(row => tbody.appendChild(row));
-    }
-
-    function logSortingClasses(headers) {
-        headers.forEach((header, index) => {
-            const sortOrder = header.classList.contains('sort-asc') ? 'sort-asc' :
-                              header.classList.contains('sort-desc') ? 'sort-desc' :
-                              'none';
-        });
     }
 
     // Apply sorting to all tables, regardless of deck-table attribute

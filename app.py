@@ -100,8 +100,6 @@ def side_bet_page(side_bet_name):
     if side_bet:
         etg_flag = request.args.get('etg', None)
 
-        print(etg_flag)
-
         if etg_flag in ['yes', 'no']:
             etg = etg_flag  # Use the value from the URL
         else:
