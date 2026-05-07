@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Tiger Baccarat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body data-etg = "{{ etg }}" onload="loadNavigationButtons()">
+    <header>
+        <h1>Dragon Tiger Baccarat</h1>
+    </header>
+    <section>
+
+        <label for="menu-select">Select number of decks: </label>
+        <select id="menu-select">
+            <option value="all">All</option>
+            <option value="6">6 Decks</option>
+            <option value="8">8 Decks</option>
+        </select>
+    </section>
+    <section id="tables">
+        <div class="menu-filter" data-filter="6" data-etg="no">
+            <h2>6 Decks</h2>
+            <table class="sideBets">
+                <thead>
+                    <tr>
+                        <th data-sort="betType">Bet Type</th>
+                        <th data-sort="rtp">RTP</th>
+                        <th data-sort="houseEdge">House Edge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dragon Tiger</td>
+                        <td>85.18%</td>
+                        <td>14.82%</td>
+                    </tr>
+                    <tr>
+                        <td>Big Dragon</td>
+                        <td>87.33%</td>
+                        <td>12.67%</td>
+                    </tr>  
+                    <tr>
+                        <td>Small Dragon</td>
+                        <td>87.03%</td>
+                        <td>12.97%</td>
+                    </tr>
+                    <tr>
+                        <td>Dragon Tie</td>
+                        <td>87.54%</td>
+                        <td>12.46%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+        <div class="menu-filter" data-filter="8" data-etg="no">
+            <h2>6 Decks</h2>
+            <table class="sideBets">
+                <thead>
+                    <tr>
+                        <th data-sort="betType">Bet Type</th>
+                        <th data-sort="rtp">RTP</th>
+                        <th data-sort="houseEdge">House Edge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dragon Tiger</td>
+                        <td>85.17%</td>
+                        <td>14.83%</td>
+                    </tr>
+                    <tr>
+                        <td>Big Dragon</td>
+                        <td>87.32%</td>
+                        <td>12.68%</td>
+                    </tr>  
+                    <tr>
+                        <td>Small Dragon</td>
+                        <td>86.95%</td>
+                        <td>13.05%</td>
+                    </tr>
+                    <tr>
+                        <td>Dragon Tie</td>
+                        <td>87.51%</td>
+                        <td>12.49%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+    </section>
+    <div id="buttons-container"></div>
+    <script src="{{ url_for('static', filename='scripts/loadNavigationButtons.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
+</body>
+</html>

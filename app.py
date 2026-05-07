@@ -59,6 +59,7 @@ side_bets = [
     SideBet(name='Bet the Set', file_path='sb_bet_the_set.html', games=['blackjack'], etg="yes"),
     SideBet(name='Bonus Bet (Texas Hold\'em Bonus Poker)', file_path='sb_bonus_bet.html', games=['texas_holdem_bonus']),
     SideBet(name='Trips Wager (Ultimate Texas Hold\'em Poker)', file_path='sb_trips_wager.html', games=['ultimate_texas_holdem']),
+    SideBet(name='Dragon Tiger Baccarat', file_path='sb_dragon_tiger_baccarat.html', games=['baccarat']),
 ]
 
 @app.route('/')
@@ -93,7 +94,7 @@ def game_page(game_name):
     else:
         abort(404)  
 
-@app.route('/side_bets/<side_bet_name>')
+@app.route('/side_bet/<side_bet_name>')
 def side_bet_page(side_bet_name):
     side_bet = next((side_bet for side_bet in side_bets if side_bet.file_path.replace('.html', '') == side_bet_name), None)
 
