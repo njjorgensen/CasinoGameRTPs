@@ -1,0 +1,135 @@
+{
+  "slug": "sb_tiger_baccarat",
+  "name": "Tiger Baccarat",
+  "etg": "no",
+  "games": [
+    "baccarat"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "Tiger Tie",
+            "88.35%",
+            "11.65%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Small Tiger",
+            "85.65%",
+            "14.35%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Big Tiger",
+            "93.00%",
+            "7.00%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Tiger",
+            "86.61%",
+            "13.39%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Tiger Pair",
+            "85.38%",
+            "14.62%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "Tiger Tie",
+            "88.50%",
+            "11.50%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Small Tiger",
+            "85.67%",
+            "14.33%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Big Tiger",
+            "93.06%",
+            "6.94%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Tiger",
+            "86.64%",
+            "13.36%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Tiger Pair",
+            "86.48%",
+            "13.52%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

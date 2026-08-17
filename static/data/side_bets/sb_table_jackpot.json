@@ -1,0 +1,47 @@
+{
+  "slug": "sb_table_jackpot",
+  "name": "Table Jackpot System",
+  "etg": "no",
+  "games": [
+    "mississippi_stud",
+    "caribbean_stud",
+    "texas_holdem_bonus",
+    "ultimate_texas_holdem",
+    "three_card_poker"
+  ],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "Table Jackpot System",
+            "85.00%",
+            "15.00%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

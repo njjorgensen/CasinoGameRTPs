@@ -1,0 +1,77 @@
+{
+  "slug": "three_card_poker",
+  "name": "Three Card Poker",
+  "etg": "both",
+  "side_bets": [
+    "sb_pair_plus",
+    "sb_six_card_bonus",
+    "sb_table_jackpot"
+  ],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "aveUnitsBet",
+      "label": "Average Units Bet",
+      "numeric": true
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    },
+    {
+      "key": "effectiveHouseEdge",
+      "label": "Effective RTP / House Edge",
+      "numeric": false
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "5-4-1 paytable",
+            "1.67",
+            "96.63%",
+            "3.37%",
+            "97.99% / 2.01%"
+          ],
+          "etg": "both"
+        },
+        {
+          "cells": [
+            "5-3-1 paytable",
+            "1.67",
+            "96.39%",
+            "3.61%",
+            "97.84% / 2.16%"
+          ],
+          "etg": "yes"
+        },
+        {
+          "cells": [
+            "4-3-1 paytable",
+            "1.67",
+            "96.17%",
+            "3.83%",
+            "97.72% / 2.28%"
+          ],
+          "etg": "yes"
+        }
+      ]
+    }
+  ]
+}

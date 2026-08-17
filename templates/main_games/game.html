@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ game.name }} RTPs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body data-etg="{{ etg }}" onload="loadNavigationButtons()">
+    <header>
+        <h1>{{ game.name }}</h1>
+    </header>
+    {% if game.variant_filter %}
+    <section>
+        <label for="menu-select">{{ game.variant_filter.label }}</label>
+        <select id="menu-select">
+            <option value="all">All</option>
+            {% for opt in game.variant_filter.options %}
+            <option value="{{ opt.value }}">{{ opt.label }}</option>
+            {% endfor %}
+        </select>
+    </section>
+    {% endif %}
+    <section id="tables">
+        {% for table in game.tables %}
+        <div class="menu-filter"{% if table.variant %} data-filter="{{ table.variant }}"{% endif %}{% if table.etg %} data-etg="{{ table.etg }}"{% endif %}>
+            {% if table.heading %}<h2>{{ table.heading }}</h2>{% endif %}
+            <table class="mainGame"{% if table.etg %} data-etg="{{ table.etg }}"{% endif %}>
+                <thead>
+                    <tr>
+                        {% for col in game.columns %}
+                        <th data-sort="{{ col.key }}" data-numeric="{{ col.numeric | tojson }}">{{ col.label }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in table.rows %}
+                    <tr{% if row.etg %} data-etg="{{ row.etg }}"{% endif %}>
+                        {% for cell in row.cells %}<td>{{ cell }}</td>{% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </section>
+    {% if side_bets %}
+    <section>
+        <h2>Side Bets</h2>
+        <table id="sideBets"{% if show_decks_column %} class="table-4-columns"{% endif %}>
+            <thead>
+                <tr>
+                    <th data-sort="betType">Side Bet</th>
+                    {% if show_decks_column %}<th data-sort="numberOfDecks">Number of Decks</th>{% endif %}
+                    <th data-sort="rtp" data-numeric="true">RTP</th>
+                    <th data-sort="houseEdge" data-numeric="true">House Edge</th>
+                </tr>
+            </thead>
+            <tbody id="sideBets-tbody"></tbody>
+        </table>
+    </section>
+    <script id="side-bets-data" type="application/json">{{ side_bets | tojson }}</script>
+    {% endif %}
+    <div id="buttons-container"></div>
+    <script src="{{ url_for('static', filename='scripts/loadNavigationButtons.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/tableSort.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
+</body>
+</html>

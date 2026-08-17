@@ -3,40 +3,26 @@
 // mainRtpRange.js (main games) and sideBetRtpRange.js (side bets). Depends
 // on addSortingToTable from tableSort.js.
 
-async function fetchAndParseHTML(url) {
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error(`Network response was not ok for ${url}`);
-    }
-    const text = await response.text();
-    return new DOMParser().parseFromString(text, 'text/html');
+// A value matches the page's ETG flag if either side is unset/"both", or
+// they're equal outright. Mirrors scripts.js's matchesETG.
+function matchesETG(value, etgFlag) {
+    return value == null || value === 'both' || etgFlag === 'both' || value === etgFlag;
 }
 
-function extractRTPValues(doc, tableSelector) {
+function extractRTPValues(gameData, etgFlag) {
+    const rtpIndex = gameData.columns.findIndex(col => col.key === 'rtp');
+    const betTypeIndex = gameData.columns.findIndex(col => col.key === 'betType');
+    if (rtpIndex === -1 || betTypeIndex === -1) return [];
+
     const rtpData = [];
+    gameData.tables.forEach(table => {
+        if (!matchesETG(table.etg, etgFlag)) return;
 
-    doc.querySelectorAll(tableSelector).forEach(table => {
-        const headers = table.querySelectorAll('thead th');
-        let rtpColumnIndex = -1;
-        let betTypeColumnIndex = -1;
+        table.rows.forEach(row => {
+            if (!matchesETG(row.etg, etgFlag)) return;
 
-        headers.forEach((header, index) => {
-            const headerText = header.textContent.trim().toLowerCase();
-            if (headerText === 'rtp') {
-                rtpColumnIndex = index;
-            } else if (headerText === 'bet type') {
-                betTypeColumnIndex = index;
-            }
-        });
-
-        if (rtpColumnIndex === -1 || betTypeColumnIndex === -1) return;
-
-        table.querySelectorAll('tbody tr').forEach(row => {
-            const cells = row.querySelectorAll('td');
-            if (cells.length <= rtpColumnIndex || cells.length <= betTypeColumnIndex) return;
-
-            const rtpValue = parseFloat(cells[rtpColumnIndex].textContent.trim());
-            const betType = cells[betTypeColumnIndex].textContent.trim();
+            const rtpValue = parseFloat(row.cells[rtpIndex]);
+            const betType = row.cells[betTypeIndex];
             if (!isNaN(rtpValue)) {
                 rtpData.push({ rtpValue, betType });
             }
@@ -69,9 +55,9 @@ function createMinMaxRTPTable(rtpData) {
         <table id="min-max-rtp-table">
             <thead>
                 <tr>
-                    <th data-sort="gameName">Game Name</th>
-                    <th data-sort="minRTP">Min RTP</th>
-                    <th data-sort="maxRTP">Max RTP</th>
+                    <th data-sort="gameName" data-numeric="false">Game Name</th>
+                    <th data-sort="minRTP" data-numeric="true">Min RTP</th>
+                    <th data-sort="maxRTP" data-numeric="true">Max RTP</th>
                 </tr>
             </thead>
             <tbody>
@@ -90,10 +76,10 @@ function createMinMaxRTPTable(rtpData) {
     addSortingToTable(document.getElementById('min-max-rtp-table'));
 }
 
-// Fetches the home page, follows every link matching `linkSelector`, pulls
-// RTP values out of each linked page's tables matching `tableSelector`, and
-// renders a summary table of min/max RTP per game.
-async function displayRTPRanges(linkSelector, tableSelector) {
+// Fetches the home page, follows every link matching `linkSelector`, and for
+// each one fetches its JSON data file from static/data/<dataDir>/<slug>.json
+// to compute min/max RTP per game.
+async function displayRTPRanges(linkSelector, dataDir) {
     try {
         const response = await fetch('../');
         if (!response.ok) {
@@ -103,30 +89,35 @@ async function displayRTPRanges(linkSelector, tableSelector) {
         const text = await response.text();
         const doc = new DOMParser().parseFromString(text, 'text/html');
 
-        const gameFiles = Array.from(doc.querySelectorAll(linkSelector))
-            .map(link => link.getAttribute('href'));
-
-        if (gameFiles.length === 0) {
-            console.warn('No game files found in index.html.');
+        const links = Array.from(doc.querySelectorAll(linkSelector));
+        if (links.length === 0) {
+            console.warn('No game links found in index.html.');
             return;
         }
 
         const gameData = [];
 
-        for (const file of gameFiles) {
+        for (const link of links) {
+            const url = new URL(link.getAttribute('href'), location.href);
+            const slug = url.pathname.split('/').filter(Boolean).pop();
+            const etgFlag = url.searchParams.get('etg') || 'both';
+
             try {
-                const gameDoc = await fetchAndParseHTML(file);
-                const rtpValues = extractRTPValues(gameDoc, tableSelector);
+                const dataResponse = await fetch(`../static/data/${dataDir}/${slug}.json`);
+                if (!dataResponse.ok) {
+                    throw new Error(`Network response was not ok for ${slug}.json`);
+                }
+                const data = await dataResponse.json();
+                const rtpValues = extractRTPValues(data, etgFlag);
 
                 if (rtpValues.length === 0) {
-                    console.warn(`No RTP values found for ${file}`);
+                    console.warn(`No RTP values found for ${slug}`);
                     continue;
                 }
 
-                const gameName = gameDoc.querySelector('header h1').textContent.trim();
-                gameData.push({ gameName, ...calculateMinMaxRTP(rtpValues) });
+                gameData.push({ gameName: data.name, ...calculateMinMaxRTP(rtpValues) });
             } catch (error) {
-                console.error(`Failed to process file ${file}:`, error);
+                console.error(`Failed to process ${slug}:`, error);
             }
         }
 

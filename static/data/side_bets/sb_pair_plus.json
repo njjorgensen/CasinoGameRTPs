@@ -1,0 +1,83 @@
+{
+  "slug": "sb_pair_plus",
+  "name": "Pair Plus",
+  "etg": "both",
+  "games": [
+    "three_card_poker"
+  ],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "40-30-6-4-1 paytable",
+            "97.68%",
+            "2.34%"
+          ],
+          "etg": "yes"
+        },
+        {
+          "cells": [
+            "40-25-6-4-1 paytable",
+            "96.51%",
+            "3.49%"
+          ],
+          "etg": "both"
+        },
+        {
+          "cells": [
+            "40-30-5-4-1 paytable",
+            "94.43%",
+            "5.57%"
+          ],
+          "etg": "yes"
+        },
+        {
+          "cells": [
+            "40-30-6-3-1 paytable",
+            "92.72%",
+            "7.28%"
+          ],
+          "etg": "yes"
+        },
+        {
+          "cells": [
+            "35-25-6-4-1 paytable",
+            "95.42%",
+            "4.58%"
+          ],
+          "etg": "yes"
+        },
+        {
+          "cells": [
+            "35-33-6-4-1 paytable",
+            "97.30%",
+            "2.70%"
+          ],
+          "etg": "yes"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "slug": "texas_holdem_bonus",
+  "name": "Texas Hold'em Bonus Poker",
+  "etg": "no",
+  "side_bets": [
+    "sb_bonus_bet",
+    "sb_table_jackpot"
+  ],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "aveUnitsBet",
+      "label": "Average Units Bet",
+      "numeric": true
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    },
+    {
+      "key": "effectiveHouseEdge",
+      "label": "Effective RTP / House Edge",
+      "numeric": false
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Texas Hold'em Bonus Poker",
+            "3.81",
+            "94.41%",
+            "5.59%",
+            "98.544% / 1.46%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

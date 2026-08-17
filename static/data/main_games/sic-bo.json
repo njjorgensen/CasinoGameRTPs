@@ -1,0 +1,169 @@
+{
+  "slug": "sic-bo",
+  "name": "Sic-Bo",
+  "etg": "both",
+  "side_bets": [],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Small / Big",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Even / Odd",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": "no"
+        },
+        {
+          "cells": [
+            "Triple",
+            "83.80%",
+            "16.20%"
+          ],
+          "etg": "no"
+        },
+        {
+          "cells": [
+            "Triple",
+            "88.43%",
+            "11.57%"
+          ],
+          "etg": "yes"
+        },
+        {
+          "cells": [
+            "Double",
+            "88.89%",
+            "11.11%"
+          ],
+          "etg": "no"
+        },
+        {
+          "cells": [
+            "Double",
+            "96.30%",
+            "3.70%"
+          ],
+          "etg": "yes"
+        },
+        {
+          "cells": [
+            "Any Triple",
+            "88.89%",
+            "11.11%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 dice total - 4 or 17",
+            "87.50%",
+            "12.50%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 dice total - 5 or 16",
+            "88.89%",
+            "11.11%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 dice total - 6 or 15",
+            "87.96%",
+            "12.04%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 dice total - 7 or 14",
+            "90.28%",
+            "9.72%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 dice total - 8 or 13",
+            "87.50%",
+            "12.50%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 dice total - 9 or 12",
+            "92.59%",
+            "7.41%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 dice total - 10 or 11",
+            "87.50%",
+            "12.50%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "2 Dice combinations (Domino)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Any one number",
+            "96.30%",
+            "3.70%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Four-number combination",
+            "88.89%",
+            "11.11%"
+          ],
+          "etg": "no"
+        }
+      ]
+    }
+  ]
+}

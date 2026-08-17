@@ -1,0 +1,79 @@
+{
+  "slug": "sb_tie_wager",
+  "name": "Tie Wager (Casino War)",
+  "etg": "both",
+  "games": [
+    "casino_war"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Tie Wager",
+            "81.35%",
+            "18.65%"
+          ],
+          "etg": "no"
+        },
+        {
+          "cells": [
+            "Tie Wager",
+            "88.75%",
+            "11.25%"
+          ],
+          "etg": "yes"
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "Tie Wager",
+            "82.17%",
+            "17.83%"
+          ],
+          "etg": "no"
+        }
+      ]
+    }
+  ]
+}

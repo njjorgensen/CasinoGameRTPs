@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ side_bet.name }} RTPs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body data-etg="{{ etg }}" onload="loadNavigationButtons()">
+    <header>
+        <h1>{{ side_bet.name }}</h1>
+    </header>
+    {% if side_bet.variant_filter %}
+    <section>
+        <label for="menu-select">{{ side_bet.variant_filter.label }}</label>
+        <select id="menu-select">
+            <option value="all">All</option>
+            {% for opt in side_bet.variant_filter.options %}
+            <option value="{{ opt.value }}">{{ opt.label }}</option>
+            {% endfor %}
+        </select>
+    </section>
+    {% endif %}
+    <section id="tables">
+        {% for table in side_bet.tables %}
+        <div class="menu-filter"{% if table.variant %} data-filter="{{ table.variant }}"{% endif %}{% if table.etg %} data-etg="{{ table.etg }}"{% endif %}>
+            {% if table.heading %}<h2>{{ table.heading }}</h2>{% endif %}
+            <table class="sideBets"{% if table.etg %} data-etg="{{ table.etg }}"{% endif %}>
+                <thead>
+                    <tr>
+                        {% for col in side_bet.columns %}
+                        <th data-sort="{{ col.key }}" data-numeric="{{ col.numeric | tojson }}">{{ col.label }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in table.rows %}
+                    <tr{% if row.etg %} data-etg="{{ row.etg }}"{% endif %}>
+                        {% for cell in row.cells %}<td>{{ cell }}</td>{% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </section>
+    <div id="buttons-container"></div>
+    <script src="{{ url_for('static', filename='scripts/loadNavigationButtons.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/tableSort.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
+</body>
+</html>

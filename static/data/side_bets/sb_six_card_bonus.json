@@ -1,0 +1,59 @@
+{
+  "slug": "sb_six_card_bonus",
+  "name": "6 Card Bonus",
+  "etg": "yes",
+  "games": [
+    "three_card_poker"
+  ],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": "yes",
+      "rows": [
+        {
+          "cells": [
+            "1000-200-50-25-20-10-5 paytable",
+            "89.78%",
+            "10.22%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "1000-200-100-20-15-9-8 paytable",
+            "93.26%",
+            "6.74%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "1000-200-100-20-15-10-7 paytable",
+            "91.44%",
+            "8.56%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

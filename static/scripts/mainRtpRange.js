@@ -6,5 +6,5 @@ function displayMainRTPs() {
 }
 
 function displayMinMaxRTPs() {
-    return displayRTPRanges('#main-game-names .game-item a', 'table.mainGame');
+    return displayRTPRanges('#main-game-names .game-item a', 'main_games');
 }

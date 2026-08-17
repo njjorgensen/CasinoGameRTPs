@@ -1,0 +1,72 @@
+{
+  "slug": "blackjack_switch",
+  "name": "Blackjack Switch",
+  "etg": "no",
+  "side_bets": [
+    "sb_star_pairs",
+    "sb_super_match"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Blackjack Switch - 6 Decks",
+            "99.42%",
+            "0.58%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Blackjack Switch - 8 Decks",
+            "99.40%",
+            "0.60%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

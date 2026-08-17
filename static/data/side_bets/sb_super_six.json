@@ -1,0 +1,71 @@
+{
+  "slug": "sb_super_six",
+  "name": "Super 6",
+  "etg": "both",
+  "games": [
+    "baccarat"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Banker 6",
+            "86.15%",
+            "13.85%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Banker 6",
+            "86.18%",
+            "13.82%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

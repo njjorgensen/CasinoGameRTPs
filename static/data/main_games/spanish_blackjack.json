@@ -1,0 +1,71 @@
+{
+  "slug": "spanish_blackjack",
+  "name": "Spanish Blackjack",
+  "etg": "no",
+  "side_bets": [
+    "sb_perfect_pairs_spanish"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Spanish BJ - 6 Decks",
+            "99.60%",
+            "0.40%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Spanish BJ - 8 Decks",
+            "99.58%",
+            "0.42%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

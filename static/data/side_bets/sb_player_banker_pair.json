@@ -1,0 +1,87 @@
+{
+  "slug": "sb_player_banker_pair",
+  "name": "Player Pair or Banker Pair",
+  "etg": "both",
+  "games": [
+    "baccarat"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Player Pair",
+            "88.75%",
+            "11.25%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Banker Pair",
+            "88.75%",
+            "11.25%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Player Pair",
+            "89.64%",
+            "10.36%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Banker Pair",
+            "89.64%",
+            "10.36%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

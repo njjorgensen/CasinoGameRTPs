@@ -1,0 +1,90 @@
+{
+  "slug": "sb_royal_match",
+  "name": "Royal Match 21",
+  "etg": "yes",
+  "games": [
+    "blackjack"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "5",
+        "label": "5 Decks"
+      },
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "5",
+      "heading": "5 Decks",
+      "etg": "yes",
+      "rows": [
+        {
+          "cells": [
+            "Royal Match",
+            "88.40%",
+            "11.60%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": "yes",
+      "rows": [
+        {
+          "cells": [
+            "Royal Match",
+            "88.50%",
+            "11.50%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": "yes",
+      "rows": [
+        {
+          "cells": [
+            "Royal Match",
+            "88.70%",
+            "11.30%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

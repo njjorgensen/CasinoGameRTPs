@@ -1,0 +1,56 @@
+{
+  "slug": "ultimate_texas_holdem",
+  "name": "Ultimate Texas Hold'em Poker",
+  "etg": "no",
+  "side_bets": [
+    "sb_table_jackpot",
+    "sb_trips_wager"
+  ],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "aveUnitsBet",
+      "label": "Average Units Bet",
+      "numeric": true
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    },
+    {
+      "key": "effectiveHouseEdge",
+      "label": "Effective RTP / House Edge",
+      "numeric": false
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Ultimate Texas Hold'em Poker",
+            "4.11",
+            "97.82%",
+            "2.18%",
+            "99.47% / 0.53%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

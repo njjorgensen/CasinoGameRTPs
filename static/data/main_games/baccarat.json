@@ -1,0 +1,108 @@
+{
+  "slug": "baccarat",
+  "name": "Baccarat",
+  "etg": "both",
+  "side_bets": [
+    "sb_dragon_bonus",
+    "sb_dragon_tiger_baccarat",
+    "sb_perfect_pairs",
+    "sb_player_banker_pair",
+    "sb_super_six",
+    "sb_tiger_baccarat"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Banker Bet",
+            "98.94%",
+            "1.06%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Player Bet",
+            "98.76%",
+            "1.24%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Tie Bet",
+            "85.56%",
+            "14.44%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Banker Bet",
+            "98.94%",
+            "1.06%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Player Bet",
+            "98.76%",
+            "1.24%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Tie Bet",
+            "85.56%",
+            "14.44%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

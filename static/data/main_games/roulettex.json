@@ -1,0 +1,113 @@
+{
+  "slug": "roulettex",
+  "name": "RouletteX",
+  "etg": "yes",
+  "side_bets": [],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "1 Number (Straight Up) - 500-250-100-50 bonus",
+            "96.34%",
+            "3.66%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "1 Number (Straight Up) - 1000-250-100-50 bonus",
+            "96.23%",
+            "3.77%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "2 Numbers (Split)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 Numbers (Street)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "4 Numbers (Corner)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "6 Numbers (6-Line)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Column / Dozen",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Low / High",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Even / Odd",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Red / Black",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

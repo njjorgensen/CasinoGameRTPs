@@ -4,8 +4,6 @@
 
 const sortingInitialized = new WeakSet();
 
-const NUMERIC_SORT_TYPES = new Set(['rtp', 'houseEdge', 'minRTP', 'maxRTP']);
-
 function addSortingToTable(table) {
     if (!table || sortingInitialized.has(table)) return;
     sortingInitialized.add(table);
@@ -24,7 +22,7 @@ function addSortingToTable(table) {
             const newOrder = currentOrder === 'asc' ? 'desc' : 'asc';
 
             const columnIndex = Array.from(header.parentElement.children).indexOf(header);
-            const dataType = header.getAttribute('data-sort');
+            const isNumeric = header.getAttribute('data-numeric') === 'true';
 
             headers.forEach(h => {
                 h.removeAttribute('data-sort-order');
@@ -34,12 +32,12 @@ function addSortingToTable(table) {
             header.setAttribute('data-sort-order', newOrder);
             header.classList.add(newOrder === 'asc' ? 'sort-asc' : 'sort-desc');
 
-            sortTableByColumn(table, columnIndex, dataType, newOrder === 'asc');
+            sortTableByColumn(table, columnIndex, isNumeric, newOrder === 'asc');
         });
     });
 }
 
-function sortTableByColumn(table, columnIndex, dataType, isAscending) {
+function sortTableByColumn(table, columnIndex, isNumeric, isAscending) {
     const tbody = table.querySelector('tbody');
     const rows = Array.from(tbody.querySelectorAll('tr'));
     const direction = isAscending ? 1 : -1;
@@ -48,7 +46,7 @@ function sortTableByColumn(table, columnIndex, dataType, isAscending) {
         const aText = a.cells[columnIndex].textContent.trim();
         const bText = b.cells[columnIndex].textContent.trim();
 
-        if (NUMERIC_SORT_TYPES.has(dataType)) {
+        if (isNumeric) {
             return (parseFloat(aText) - parseFloat(bText)) * direction;
         }
         return aText.localeCompare(bText) * direction;

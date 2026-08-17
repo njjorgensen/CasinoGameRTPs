@@ -6,5 +6,5 @@ function displaySideBetRTPs() {
 }
 
 function displayMinMaxRTPs() {
-    return displayRTPRanges('#side-bets .game-item a', 'table.sideBets');
+    return displayRTPRanges('#side-bets .game-item a', 'side_bets');
 }

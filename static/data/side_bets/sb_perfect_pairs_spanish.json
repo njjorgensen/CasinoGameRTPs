@@ -1,0 +1,71 @@
+{
+  "slug": "sb_perfect_pairs_spanish",
+  "name": "Perfect Pairs - Spanish",
+  "etg": "no",
+  "games": [
+    "spanish_blackjack"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "25-10-5 Payout",
+            "93.38%",
+            "6.62%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "20-12-6 Payout",
+            "94.78%",
+            "5.22%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

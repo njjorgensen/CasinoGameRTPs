@@ -1,0 +1,83 @@
+{
+  "slug": "lucky_draw_baccarat",
+  "name": "Lucky Draw Baccarat",
+  "etg": "no",
+  "side_bets": [],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "aveUnitsBet",
+      "label": "Average Units Bet",
+      "numeric": true
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    },
+    {
+      "key": "effectiveHouseEdge",
+      "label": "Effective RTP / House Edge",
+      "numeric": false
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Lucky Draw Baccarat",
+            "1.60",
+            "96.89%",
+            "3.11%",
+            "98.05% / 1.95%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Lucky Draw Baccarat",
+            "1.60",
+            "96.89%",
+            "3.11%",
+            "98.05% / 1.95%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "slug": "caribbean_stud",
+  "name": "Caribbean Stud Poker",
+  "etg": "no",
+  "side_bets": [
+    "sb_table_jackpot"
+  ],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "aveUnitsBet",
+      "label": "Average Units Bet",
+      "numeric": true
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    },
+    {
+      "key": "effectiveHouseEdge",
+      "label": "Effective RTP / House Edge",
+      "numeric": false
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Caribbean Stud Poker",
+            "2.05",
+            "94.78%",
+            "5.22%",
+            "97.44% / 2.56%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "slug": "roulette",
+  "name": "Roulette",
+  "etg": "both",
+  "side_bets": [],
+  "variant_filter": {
+    "label": "Roulette game:",
+    "kind": "zero_count",
+    "options": [
+      {
+        "value": "single-zero",
+        "label": "Single Zero"
+      },
+      {
+        "value": "double-zero",
+        "label": "Double Zero"
+      },
+      {
+        "value": "triple-zero",
+        "label": "Triple Zero"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "single-zero",
+      "heading": "Single Zero",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "1 Number (Straight Up)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "2 Numbers (Split)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 Numbers (Street)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "4 Numbers (corner)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "6 Numbers (6-line)",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Column / Dozen",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Low / High",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Even / Odd",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Red / Black",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "double-zero",
+      "heading": "Double Zero",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "1 Number (Straight Up)",
+            "94.74%",
+            "5.26%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "2 Numbers (Split)",
+            "94.74%",
+            "5.26%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 Numbers (Street)",
+            "94.74%",
+            "5.26%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "4 Numbers (corner)",
+            "94.74%",
+            "5.26%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "5 Numbers (5-line)",
+            "92.11%",
+            "7.89%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "6 Numbers (6-line)",
+            "94.74%",
+            "5.26%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Column / Dozen",
+            "94.74%",
+            "5.26%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Low / High",
+            "94.74%",
+            "5.26%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Even / Odd",
+            "94.74%",
+            "5.26%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Red / Black",
+            "94.74%",
+            "5.26%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "triple-zero",
+      "heading": "Triple Zero",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "1 Number (Straight Up)",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "2 Numbers (Split)",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "3 Numbers (Street)",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "4 Numbers (corner)",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "5 Numbers (5-line)",
+            "89.74%",
+            "10.26%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "6 Numbers (6-line)",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Column / Dozen",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Low / High",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Even / Odd",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Red / Black",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

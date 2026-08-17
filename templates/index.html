@@ -27,7 +27,7 @@
                 <ul id="main-game-names">
                     {% for game in main_games %}
                     <li class="game-item" data-name="{{ game.name }}">
-                        <a href="{{ url_for('game_page', game_name=game.file_path.replace('.html', '')) }}?etg=no">{{ game.name }}</a>
+                        <a href="{{ url_for('game_page', game_name=game.slug) }}?etg=no">{{ game.name }}</a>
                     </li>
                     {% else %}
                     <li>No main games available at the moment.</li>
@@ -39,7 +39,7 @@
                 <ul id="side-bet-names">
                     {% for side_bet in side_bets %}
                     <li class="game-item" data-name="{{ side_bet.name }}">
-                        <a href="{{ url_for('side_bet_page', side_bet_name=side_bet.file_path.replace('.html', '')) }}?etg=no">{{ side_bet.name }}</a>
+                        <a href="{{ url_for('side_bet_page', side_bet_name=side_bet.slug) }}?etg=no">{{ side_bet.name }}</a>
                     </li>
                     {% else %}
                     <li>No side bets available at the moment.</li>
@@ -58,7 +58,7 @@
                 <ul id="etg-main-game-names">
                     {% for game in etg_main_games %}
                     <li class="game-item" data-name="{{ game.name }}">
-                        <a href="{{ url_for('game_page', game_name=game.file_path.replace('.html', '')) }}?etg=yes">{{ game.name }}</a>
+                        <a href="{{ url_for('game_page', game_name=game.slug) }}?etg=yes">{{ game.name }}</a>
                     </li>
                     {% else %}
                     <li>No ETG main games available at the moment.</li>
@@ -71,7 +71,7 @@
                 <ul id="etg-side-bet-names">
                     {% for side_bet in etg_side_bets %}
                     <li class="game-item" data-name="{{ side_bet.name }}">
-                        <a href="{{ url_for('side_bet_page', side_bet_name=side_bet.file_path.replace('.html', '')) }}?etg=yes">{{ side_bet.name }}</a>
+                        <a href="{{ url_for('side_bet_page', side_bet_name=side_bet.slug) }}?etg=yes">{{ side_bet.name }}</a>
                     </li>
                     {% else %}
                     <li>No ETG side bets available at the moment.</li>

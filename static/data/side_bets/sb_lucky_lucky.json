@@ -1,0 +1,140 @@
+{
+  "slug": "sb_lucky_lucky",
+  "name": "Lucky Lucky",
+  "etg": "no",
+  "games": [
+    "blackjack",
+    "blackjack_challenge",
+    "soft_17_blackjack"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "5",
+        "label": "5 Decks"
+      },
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "5",
+      "heading": "5 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "200-100-50-30-10-3-2-2 Payout",
+            "94.68%",
+            "5.32%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "200-100-50-30-15-3-2-1 Payout",
+            "90.04%",
+            "9.96%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "200-100-50-30-10-3-2-1 Payout",
+            "87.40%",
+            "12.60%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "200-100-50-30-10-3-2-2 Payout",
+            "94.69%",
+            "5.31%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "200-100-50-30-15-3-2-1 Payout",
+            "90.08%",
+            "9.92%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "200-100-50-30-10-3-2-1 Payout",
+            "87.43%",
+            "12.57%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "200-100-50-30-10-3-2-2 Payout",
+            "94.72%",
+            "5.28%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "200-100-50-30-15-3-2-1 Payout",
+            "90.12%",
+            "9.88%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "200-100-50-30-10-3-2-1 Payout",
+            "87.46%",
+            "12.54%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

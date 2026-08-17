@@ -1,116 +1,77 @@
+import json
+from pathlib import Path
+
 from flask import Flask, request, render_template, abort
-from dataclasses import dataclass, field
-from typing import List
-
-@dataclass
-class Game:
-    name: str
-    file_path:str
-    etg: str = 'no'
-
-@dataclass
-class SideBet:
-    name: str
-    file_path:str
-    games: List[str]
-    etg: str = 'no'
 
 app = Flask(__name__)
 
-main_games = [
-    Game(name='Blackjack', file_path='blackjack.html', etg='both'),
-    Game(name='Blackjack Challenge', file_path='blackjack_challenge.html'),
-    Game(name='Baccarat', file_path='baccarat.html', etg='both'),
-    Game(name='Caribbean Stud Poker', file_path='caribbean_stud.html'),
-    Game(name='Mississippi Stud Poker', file_path='mississippi_stud.html'),
-    Game(name='Roulette', file_path='roulette.html', etg='both'),
-    Game(name='Sic-Bo', file_path='sic-bo.html', etg='both'),
-    Game(name='Soft 17 Blackjack', file_path='soft_17_blackjack.html'),
-    Game(name='Spanish Blackjack', file_path='spanish_blackjack.html'),
-    Game(name='Texas Hold\'em Bonus Poker', file_path='texas_holdem_bonus.html'),
-    Game(name='Three Card Poker', file_path='three_card_poker.html', etg='both'),
-    Game(name='Ultimate Texas Hold\'em Poker', file_path='ultimate_texas_holdem.html'),
-    Game(name='Wheel of Fortune', file_path='wheel_of_fortune.html'),
-    Game(name='Craps', file_path='craps.html'),
-    Game(name='Lucky Draw Baccarat', file_path='lucky_draw_baccarat.html'),
-    Game(name='Blackjack Switch', file_path='blackjack_switch.html'),
-    Game(name='Casino War', file_path='casino_war.html', etg='both'),
-    Game(name='RouletteX', file_path='roulettex.html', etg='yes'),
-]
+DATA_DIR = Path(app.root_path) / 'static' / 'data'
 
-side_bets = [
-    SideBet(name='Perfect Pairs', file_path='sb_perfect_pairs.html', games=['baccarat', 'blackjack', 'blackjack_challenge', 'soft_17_blackjack']),
-    SideBet(name='Lucky Lucky', file_path='sb_lucky_lucky.html', games=['blackjack', 'blackjack_challenge', 'soft_17_blackjack']),
-    SideBet(name='Dragon Bonus', file_path='sb_dragon_bonus.html', games=['baccarat']),
-    SideBet(name='Tiger Baccarat', file_path='sb_tiger_baccarat.html', games=['baccarat']),
-    SideBet(name='Perfect Pairs - Spanish', file_path='sb_perfect_pairs_spanish.html', games=['spanish_blackjack']),
-    SideBet(name='Table Jackpot System', file_path='sb_table_jackpot.html', games=['mississippi_stud', 'caribbean_stud', 'texas_holdem_bonus', 'ultimate_texas_holdem', 'three_card_poker']),
-    SideBet(name='Player Pair or Banker Pair', file_path='sb_player_banker_pair.html', games=['baccarat'], etg='both'),
-    SideBet(name='Super 6', file_path='sb_super_six.html', games=['baccarat'], etg='both'),
-    SideBet(name='Super Sevens', file_path='sb_super_sevens.html', games=['blackjack']),
-    SideBet(name='3 Card Bonus', file_path='sb_three_card_bonus.html', games='mississippi_stud'),
-    SideBet(name='Star Pairs', file_path='sb_star_pairs.html', games=['blackjack', 'blackjack_challenge', 'soft_17_blackjack', 'blackjack_switch']),
-    SideBet(name='Super Match', file_path='sb_super_match.html', games=['blackjack_switch']),
-    SideBet(name='Tie Wager (Casino War)', file_path='sb_tie_wager.html', games=['casino_war'], etg='both'),
-    SideBet(name='6 Card Bonus', file_path='sb_six_card_bonus.html', games=['three_card_poker'], etg="yes"),
-    SideBet(name='Pair Plus', file_path='sb_pair_plus.html', games=['three_card_poker'], etg="both"),
-    SideBet(name='Kings Bounty', file_path='sb_kings_bounty.html', games=['blackjack'], etg="yes"),
-    SideBet(name='Royal Match 21', file_path='sb_royal_match.html', games=['blackjack'], etg="yes"),
-    SideBet(name='Bet the Set', file_path='sb_bet_the_set.html', games=['blackjack'], etg="yes"),
-    SideBet(name='Bonus Bet (Texas Hold\'em Bonus Poker)', file_path='sb_bonus_bet.html', games=['texas_holdem_bonus']),
-    SideBet(name='Trips Wager (Ultimate Texas Hold\'em Poker)', file_path='sb_trips_wager.html', games=['ultimate_texas_holdem']),
-    SideBet(name='Dragon Tiger Baccarat', file_path='sb_dragon_tiger_baccarat.html', games=['baccarat']),
-]
+
+def _load_dir(directory):
+    items = {}
+    for path in sorted(directory.glob('*.json')):
+        data = json.loads(path.read_text(encoding='utf-8'))
+        assert data['slug'] == path.stem, f"slug/filename mismatch: {path}"
+        items[data['slug']] = data
+    return items
+
+
+def _load_one(directory, slug):
+    path = directory / f'{slug}.json'
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+def _resolve_etg(query_value, default):
+    return query_value if query_value in ('yes', 'no') else default
+
+
+def _has_deck_variant(side_bet):
+    variant_filter = side_bet.get('variant_filter')
+    return bool(variant_filter) and variant_filter.get('kind') == 'decks'
+
 
 @app.route('/')
 def index():
-    filtered_main_games = [game for game in main_games if game.etg in ['no', 'both']]
-    filtered_side_bets = [bet for bet in side_bets if bet.etg in ['no', 'both']]
-    etg_main_games = [game for game in main_games if game.etg in ['yes', 'both']]
-    etg_side_bets = [bet for bet in side_bets if bet.etg in ['yes', 'both']]
-    
-    return render_template('index.html', 
-                        main_games=filtered_main_games, 
-                        side_bets=filtered_side_bets, 
-                        etg_main_games=etg_main_games, 
-                        etg_side_bets=etg_side_bets)
+    main_games = _load_dir(DATA_DIR / 'main_games')
+    side_bets = _load_dir(DATA_DIR / 'side_bets')
+
+    def by_etg(items, allowed):
+        return [v for v in items.values() if v['etg'] in allowed]
+
+    return render_template('index.html',
+        main_games=by_etg(main_games, ('no', 'both')),
+        side_bets=by_etg(side_bets, ('no', 'both')),
+        etg_main_games=by_etg(main_games, ('yes', 'both')),
+        etg_side_bets=by_etg(side_bets, ('yes', 'both')))
 
 
 @app.route('/game/<game_name>')
 def game_page(game_name):
-    game = next((game for game in main_games if game.file_path.replace('.html', '') == game_name), None)
-    relevant_side_bets = [bet for bet in side_bets if game_name in bet.games]
+    game = _load_one(DATA_DIR / 'main_games', game_name)
+    if not game:
+        abort(404)
 
-    if game:
-        # Get the etg flag from the query parameters
-        etg_flag = request.args.get('etg', None)  # Get the 'etg' value from the URL (e.g., ?etg=yes or ?etg=no)
+    etg = _resolve_etg(request.args.get('etg'), game['etg'])
+    side_bets = _load_dir(DATA_DIR / 'side_bets')
+    relevant_side_bets = [sb for sb in side_bets.values() if game_name in sb['games']]
+    show_decks_column = any(_has_deck_variant(sb) for sb in relevant_side_bets)
 
-        # Override 'both' if necessary
-        if etg_flag in ['yes', 'no']:
-            etg = etg_flag  # Use the value from the URL
-        else:
-            etg = game.etg  # Default to the game's original 'etg' value
-        return render_template(f'main_games/{game.file_path}', side_bets=relevant_side_bets, etg=etg)
-    else:
-        abort(404)  
+    return render_template('main_games/game.html',
+        game=game, etg=etg, side_bets=relevant_side_bets, show_decks_column=show_decks_column)
+
 
 @app.route('/side_bet/<side_bet_name>')
 def side_bet_page(side_bet_name):
-    side_bet = next((side_bet for side_bet in side_bets if side_bet.file_path.replace('.html', '') == side_bet_name), None)
+    side_bet = _load_one(DATA_DIR / 'side_bets', side_bet_name)
+    if not side_bet:
+        abort(404)
 
-    if side_bet:
-        etg_flag = request.args.get('etg', None)
+    etg = _resolve_etg(request.args.get('etg'), side_bet['etg'])
+    return render_template('side_bets/side_bet.html', side_bet=side_bet, etg=etg)
 
-        if etg_flag in ['yes', 'no']:
-            etg = etg_flag  # Use the value from the URL
-        else:
-            etg = side_bet.etg  # Default to the game's original 'etg' value
-       
-        return render_template(f'side_bets/{side_bet.file_path}', etg=etg)
-    
-    else:
-        abort(404)   
 
 if __name__ == '__main__':
     app.run(debug=True)
-

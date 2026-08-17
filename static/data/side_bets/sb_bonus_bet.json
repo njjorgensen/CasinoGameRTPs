@@ -1,0 +1,43 @@
+{
+  "slug": "sb_bonus_bet",
+  "name": "Bonus Bet (Texas Hold'em Bonus Poker)",
+  "etg": "no",
+  "games": [
+    "texas_holdem_bonus"
+  ],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Bonus Bet",
+            "91.10%",
+            "8.90%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

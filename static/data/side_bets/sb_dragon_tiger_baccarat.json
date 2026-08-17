@@ -1,0 +1,119 @@
+{
+  "slug": "sb_dragon_tiger_baccarat",
+  "name": "Dragon Tiger Baccarat",
+  "etg": "no",
+  "games": [
+    "baccarat"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "Dragon Tiger",
+            "85.18%",
+            "14.82%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Big Dragon",
+            "87.33%",
+            "12.67%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Small Dragon",
+            "87.03%",
+            "12.97%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Dragon Tie",
+            "87.54%",
+            "12.46%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "Dragon Tiger",
+            "85.17%",
+            "14.83%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Big Dragon",
+            "87.32%",
+            "12.68%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Small Dragon",
+            "86.95%",
+            "13.05%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Dragon Tie",
+            "87.51%",
+            "12.49%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

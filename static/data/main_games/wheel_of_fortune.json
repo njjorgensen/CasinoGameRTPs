@@ -1,0 +1,240 @@
+{
+  "slug": "wheel_of_fortune",
+  "name": "Wheel of Fortune",
+  "etg": "no",
+  "side_bets": [],
+  "variant_filter": {
+    "label": "Select number of spaces:",
+    "kind": "space_count",
+    "options": [
+      {
+        "value": "50",
+        "label": "50 spaces"
+      },
+      {
+        "value": "52",
+        "label": "52 spaces"
+      },
+      {
+        "value": "54",
+        "label": "54 spaces"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "50",
+      "heading": "50 Spaces",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Symbol a - 24 sections",
+            "96.00%",
+            "4.00%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol b - 8 sections",
+            "96.00%",
+            "4.00%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol c - 8 sections",
+            "96.00%",
+            "4.00%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol d - 4 sections",
+            "96.00%",
+            "4.00%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol e - 2 sections",
+            "92.00%",
+            "8.00%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol f - 2 sections",
+            "92.00%",
+            "8.00%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol g - 1 section",
+            "90.00%",
+            "10.00%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol h - 1 section",
+            "90.00%",
+            "10.00%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "52",
+      "heading": "52 Spaces",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Symbol a - 24 sections",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol b - 12 sections",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol c - 8 sections",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol d - 4 sections",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol e - 2 sections",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol f - 1 section",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol g - 1 section",
+            "92.31%",
+            "7.69%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "54",
+      "heading": "54 Spaces",
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Symbol a - 26 sections",
+            "96.30%",
+            "3.70%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol b - 13 sections",
+            "96.30%",
+            "3.70%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol c - 7 sections",
+            "97.22%",
+            "2.78%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol d - 4 sections",
+            "96.30%",
+            "3.70%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol e - 2 sections",
+            "96.30%",
+            "3.70%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol f - 1 section",
+            "98.15%",
+            "1.85%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Symbol g - 1 section",
+            "98.15%",
+            "1.85%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

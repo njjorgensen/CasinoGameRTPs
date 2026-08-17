@@ -1,7 +1,7 @@
 // scripts.js
 // Page behavior for the index page and individual game/side-bet pages:
 // search/filter, deck-select filtering, ETG (electronic table game)
-// filtering, fetching related side bets, and wiring up table sorting.
+// filtering, populating related side bets, and wiring up table sorting.
 // Table sorting itself lives in tableSort.js.
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
     const isIndexPage = path === '/';
     const isMainPage = path.startsWith('/game/');
-    const isSideBetPage = path.startsWith('/side_bets/');
+    const isSideBetPage = path.startsWith('/side_bet/');
 
     filterRowsByETG();
     filterTablesByETG();
@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (menuSelect) {
-        menuSelect.addEventListener('change', async (event) => {
+        menuSelect.addEventListener('change', (event) => {
             filterMainGameTables(event.target.value);
-            await updateSideBets(event.target.value);
+            updateSideBets(event.target.value);
         });
 
         filterMainGameTables(menuSelect.value);
@@ -100,78 +100,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    async function updateSideBets(selectedOption) {
-        if (!document.body.getAttribute('data-side-bets')) {
-            return;
-        }
+    // A value matches the page's ETG flag if either side is unset/"both",
+    // or they're equal outright.
+    function matchesETG(value, etgFlag) {
+        return value == null || value === 'both' || etgFlag === 'both' || value === etgFlag;
+    }
 
-        try {
-            const sideBetFiles = document.body.getAttribute('data-side-bets').split(',');
-            const mainGameFilters = document.querySelectorAll('.menu-filter');
-            const etgFlag = document.body.getAttribute('data-etg');
-            sideBetsTbody.innerHTML = '';
+    function updateSideBets(selectedOption) {
+        const dataEl = document.getElementById('side-bets-data');
+        if (!dataEl) return;
 
-            for (const file of sideBetFiles) {
-                const response = await fetch(file.trim());
-                const htmlText = await response.text();
-                const doc = new DOMParser().parseFromString(htmlText, 'text/html');
+        const sideBets = JSON.parse(dataEl.textContent);
+        const etgFlag = document.body.getAttribute('data-etg');
+        const mainGameFilters = document.querySelectorAll('#tables .menu-filter');
+        const showDecks = sideBetsTable.classList.contains('table-4-columns');
+        sideBetsTbody.innerHTML = '';
 
-                const sideBetHeader = doc.querySelector('header h1').textContent.trim();
+        sideBets.forEach(sideBet => {
+            sideBet.tables.forEach(table => {
+                const deckValue = table.variant;
 
-                const sideBetsTableColumns = document.getElementById('sideBets');
-                const columnsCount = sideBetsTableColumns ? sideBetsTableColumns.querySelector('thead tr').cells.length : 0;
+                // Games like Three Card Poker have no deck value, so they
+                // always count as a match.
+                const mainGameHasDeck = deckValue
+                    ? Array.from(mainGameFilters).some(mainFilter => mainFilter.getAttribute('data-filter') === deckValue)
+                    : true;
 
-                // Select side bet tables, or fall back to the whole document
-                // for side bets that aren't split by deck count.
-                const sideBetsTables = doc.querySelectorAll('.menu-filter');
-                const tablesToParse = sideBetsTables.length > 0 ? sideBetsTables : [doc];
+                if (!matchesETG(table.etg, etgFlag)) return;
+                if (!(selectedOption === 'all' || selectedOption === deckValue || !deckValue)) return;
+                if (!mainGameHasDeck) return;
 
-                tablesToParse.forEach(table => {
-                    const deckValue = table.getAttribute('data-filter');
-                    const tableETG = table.getAttribute('data-etg');
-                    const isRelevantETG = !tableETG || tableETG === etgFlag || etgFlag === 'both';
+                table.rows.forEach(row => {
+                    if (!matchesETG(row.etg, etgFlag)) return;
 
-                    // Games like Three Card Poker have no deck value, so
-                    // they always count as a match.
-                    const mainGameHasDeck = deckValue
-                        ? Array.from(mainGameFilters).some(mainFilter => mainFilter.getAttribute('data-filter') === deckValue)
-                        : true;
-
-                    if (isRelevantETG && (selectedOption === 'all' || selectedOption === deckValue || !deckValue) && mainGameHasDeck) {
-                        const rows = table.querySelectorAll('tbody tr');
-
-                        rows.forEach(row => {
-                            const rowETG = row.getAttribute('data-etg');
-                            const isRowRelevantETG = !rowETG || rowETG === etgFlag || rowETG === 'both';
-                            if (!isRowRelevantETG) return;
-
-                            const clonedRow = row.cloneNode(true);
-
-                            const betTypeCell = clonedRow.querySelector('td:first-child');
-                            betTypeCell.textContent = `${sideBetHeader} - ${betTypeCell.textContent}`;
-
-                            // Add a deck column only when relevant (e.g. the
-                            // side bets table has 4 columns).
-                            if (columnsCount === 4 && deckValue) {
-                                const deckCell = document.createElement('td');
-                                deckCell.textContent = deckValue;
-                                clonedRow.insertBefore(deckCell, clonedRow.querySelector('td:nth-child(2)'));
-                            }
-
-                            clonedRow.querySelectorAll('td').forEach((cell, index) => {
-                                cell.classList.add(`column-${index + 1}`);
-                            });
-
-                            sideBetsTbody.appendChild(clonedRow);
-                        });
+                    const cells = [`${sideBet.name} - ${row.cells[0]}`, ...row.cells.slice(1)];
+                    if (showDecks && deckValue) {
+                        cells.splice(1, 0, deckValue);
                     }
-                });
-            }
 
-            addSortingToTable(sideBetsTable);
-        } catch (error) {
-            console.error('Error fetching or processing side bets data:', error);
-        }
+                    const tr = document.createElement('tr');
+                    cells.forEach(text => {
+                        const td = document.createElement('td');
+                        td.textContent = text;
+                        tr.appendChild(td);
+                    });
+                    sideBetsTbody.appendChild(tr);
+                });
+            });
+        });
+
+        addSortingToTable(sideBetsTable);
     }
 
     document.querySelectorAll('table').forEach(table => addSortingToTable(table));
@@ -191,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!row.dataset.etg) {
                     row.dataset.etg = tableETG;
                 }
-                row.style.display = (row.dataset.etg === etgFlag || row.dataset.etg === 'both') ? '' : 'none';
+                row.style.display = matchesETG(row.dataset.etg, etgFlag) ? '' : 'none';
             });
         });
     }
@@ -203,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tables = document.querySelectorAll('table[data-etg]');
 
         tables.forEach(table => {
-            table.style.display = (table.dataset.etg === etgFlag || table.dataset.etg === 'both') ? '' : 'none';
+            table.style.display = matchesETG(table.dataset.etg, etgFlag) ? '' : 'none';
         });
     }
 

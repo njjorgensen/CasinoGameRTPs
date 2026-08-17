@@ -1,0 +1,87 @@
+{
+  "slug": "sb_dragon_bonus",
+  "name": "Dragon Bonus",
+  "etg": "no",
+  "games": [
+    "baccarat"
+  ],
+  "variant_filter": {
+    "label": "Select number of decks:",
+    "kind": "decks",
+    "options": [
+      {
+        "value": "6",
+        "label": "6 Decks"
+      },
+      {
+        "value": "8",
+        "label": "8 Decks"
+      }
+    ]
+  },
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": "6",
+      "heading": "6 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "Banker",
+            "97.35%",
+            "2.65%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Player",
+            "90.63%",
+            "9.37%"
+          ],
+          "etg": null
+        }
+      ]
+    },
+    {
+      "variant": "8",
+      "heading": "8 Decks",
+      "etg": "no",
+      "rows": [
+        {
+          "cells": [
+            "Banker",
+            "97.35%",
+            "2.65%"
+          ],
+          "etg": null
+        },
+        {
+          "cells": [
+            "Player",
+            "90.63%",
+            "9.37%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}

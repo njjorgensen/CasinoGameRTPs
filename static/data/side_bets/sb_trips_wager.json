@@ -1,0 +1,43 @@
+{
+  "slug": "sb_trips_wager",
+  "name": "Trips Wager (Ultimate Texas Hold'em Poker)",
+  "etg": "no",
+  "games": [
+    "ultimate_texas_holdem"
+  ],
+  "variant_filter": null,
+  "columns": [
+    {
+      "key": "betType",
+      "label": "Bet Type",
+      "numeric": false
+    },
+    {
+      "key": "rtp",
+      "label": "RTP",
+      "numeric": true
+    },
+    {
+      "key": "houseEdge",
+      "label": "House Edge",
+      "numeric": true
+    }
+  ],
+  "tables": [
+    {
+      "variant": null,
+      "heading": null,
+      "etg": null,
+      "rows": [
+        {
+          "cells": [
+            "Trips Wager",
+            "96.50%",
+            "3.50%"
+          ],
+          "etg": null
+        }
+      ]
+    }
+  ]
+}
